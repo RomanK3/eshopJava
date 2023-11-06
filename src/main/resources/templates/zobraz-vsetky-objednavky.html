@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="sk" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Zobraz všetky objednávky</title>
+    <style>
+        td, th {
+          padding: 10px;
+        }
+        body {
+          background: mintcream;
+        }
+        table {
+          border-spacing: 0;
+          border-color: darkcyan;
+          text-align: center;
+        }
+        .main_div {
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+        }
+        .main_div > div {
+           align-self: center;
+        }
+        .submit_btn {
+          padding: 15px;
+          border: 0;
+          background: cadetblue;
+          border-radius: 10px;
+          font-size: 18px;
+          cursor: pointer;
+        }
+        a {
+            text-decoration: none;
+            color: midnightblue;
+        }
+    </style>
+</head>
+<body>
+<div class="main_div">
+    <div>
+
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Popis</th>
+                <th>Farba</th>
+                <th>Značka</th>
+                <th>Veľkosť</th>
+                <th>Počet</th>
+                <th>Dátum objednávky</th>
+                <th>Meno zákazníka</th>
+                <th>Akcie</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="konkretnaObjednavka:${vsetkyObjednavkyThymeleaf}">
+                <td th:text="${konkretnaObjednavka.popis}"></td>
+                <td th:text="${konkretnaObjednavka.farba}"></td>
+                <td th:text="${konkretnaObjednavka.znacka}"></td>
+                <td th:text="${konkretnaObjednavka.velkost}"></td>
+                <td th:text="${konkretnaObjednavka.pocet}"></td>
+                <td th:text="${konkretnaObjednavka.datumObjednavky}"></td>
+                <td th:text="${konkretnaObjednavka.menoZakaznika}"></td>
+                <td>
+                    <a th:href="@{/uprav-objednavku/{id}(id=${konkretnaObjednavka.id})}">Uprav objednávku</a>
+                    <a th:href="@{/odstran-objednavku/{id}(id=${konkretnaObjednavka.id})}">Odstráň objednávku</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <form th:action="@{/logout}" method="post">
+        <input class="submit_btn" type="submit" value="Sign Out"/>
+    </form>
+</div>
+
+</body>
+</html>

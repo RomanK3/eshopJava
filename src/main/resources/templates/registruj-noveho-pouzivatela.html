@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="sk" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pridaj nového používateľa</title>
+    <style>
+      body {
+      background-color: aliceblue;
+      }
+      .line {
+      height: 30px;
+      padding: 15px 0;
+      display: flex;
+      align-items: center;
+      }
+      .line p {
+      width: 150px;
+      font-size: 17.5px;
+      }
+      .novy_user {
+      display: flex;
+      justify-content: center;
+      }
+      .submit_btn button {
+      padding: 15px;
+      border: 0;
+      background: cadetblue;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      }
+      .submit_btn button {
+      margin: 0 auto;
+      }
+      h1 {
+      font-size: 32px;
+      color: midnightblue;
+      text-align: center;
+      }
+      .sign_div {
+      display: flex;
+      position: relative;
+      justify-content: center;
+      }
+      .signOut_btn {
+      padding: 15px;
+      border: 0;
+      background: cadetblue;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      }
+      .form_signOut {
+      position: absolute;
+      right: 0;
+      }
+    </style>
+</head>
+<body>
+<div>
+  <div class="sign_div">
+    <h1>Pridaj nového používateľa</h1>
+    <form class="form_signOut" th:action="@{/logout}" method="post">
+      <input class="signOut_btn" type="submit" value="Sign Out"/>
+    </form>
+  </div>
+  <div class="novy_user">
+
+  <form method="POST" th:action="@{/uloz-pouzivatela}" th:object="${pouzivatelObjektThymeleaf}"><!-- pouzivatelObjektThymeleaf je presne to iste, co mame v controlleri, ked volame tuto stranku -->
+    <input th:field="*{id}" type="hidden" />
+    <div class="line">
+      <p>Meno</p>
+      <input th:field="*{meno}" type="text" /><br />
+    </div>
+    <div class="line">
+      <p>Priezvisko</p>
+      <input th:field="*{priezvisko}" type="text" /><br />
+    </div>
+    <div class="line">
+      <p>Používateľské</p>
+      <input th:field="*{username}" type="text" /><br />
+    </div>
+    <div class="line">
+      <p>Heslo</p>
+      <input th:field="*{heslo}" type="text" /><br />
+    </div>
+    <div class="submit_btn">
+      <button type="submit">Ulož registráciu</button>
+    </div>
+  </form>
+  </div>
+</div>
+</body>
+</html>

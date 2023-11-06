@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="sk" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pridaj novú objednávku</title>
+  <style>
+    body {
+      background-color: aliceblue;
+    }
+    .line {
+      height: 30px;
+      padding: 15px 0;
+      display: flex;
+      align-items: center;
+    }
+    .line p {
+      width: 150px;
+      font-size: 17.5px;
+    }
+    .nova_objednavka {
+      display: flex;
+      justify-content: center;
+    }
+    .submit_btn button {
+      padding: 15px;
+      border: 0;
+      background: cadetblue;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+    }
+    .submit_btn button {
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 32px;
+      color: midnightblue;
+      text-align: center;
+    }
+    .sign_div {
+      display: flex;
+      position: relative;
+      justify-content: center;
+    }
+    .signOut_btn {
+      padding: 15px;
+      border: 0;
+      background: cadetblue;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .form_signOut {
+      position: absolute;
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <div class="sign_div">
+    <h1>Pridaj novú objednávku</h1>
+    <form class="form_signOut" th:action="@{/logout}" method="post">
+      <input class="signOut_btn" type="submit" value="Sign Out"/>
+    </form>
+  </div>
+
+  <div class="nova_objednavka">
+
+  <form method="POST" th:action="@{/uloz-objednavku}" th:object="${objednavkaObjektThymeleaf}"><!-- objednavkaObjektThymeleaf je presne to iste, co mame v controlleri, ked volame tuto stranku -->
+      <input th:field="*{id}" type="hidden" />
+      <div class="line">
+        <p>Popis</p>
+        <input th:field="*{popis}" type="text" /><br />
+      </div>
+      <div class="line">
+        <p>Farba</p>
+        <select th:field="*{farba}">
+          <option value="Červené">Červené</option>
+          <option value="Modré">Modré</option>
+          <option value="Zelené">Zelené</option>
+        </select><br />
+      </div>
+
+      <div class="line">
+        <p>Značka</p>
+        <input th:field="*{znacka}" type="text" /><br />
+      </div>
+
+      <div class="line">
+        <p>Veľkosť</p>
+        <select th:field="*{velkost}">
+          <option value="XS">XS</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+        </select><br />
+      </div>
+      <div class="line">
+        <p>Počet</p> <input th:field="*{pocet}" type="number" /><br />
+      </div>
+      <div class="line">
+        <p>Dátum objednávky</p> <input th:field="*{datumObjednavky}" type="date" /><br />
+      </div>
+      <div class="line">
+        <p>Meno zákazníka </p><input th:field="*{menoZakaznika}" type="text" /><br />
+      </div>
+      <div class="submit_btn">
+        <button type="submit">Pridat' novu objednávku</button>
+      </div>
+  </form>
+  </div>
+</div>
+</body>
+</html>

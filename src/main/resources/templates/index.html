@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Úvodná stránka</title>
+    <link rel="stylesheet" th:hrefhref="@{..css/styles.css}">
+    <style>
+        body {
+            background-color: darkgray
+        }
+        .welcome {
+            color: #383838;
+            font-size:32px;
+            text-align: center;
+        }
+        .btn_start {
+            text-align: center;
+            display: flex;
+            gap: 20px;
+            padding-top: 80px;
+            justify-content: center;
+        }
+        a {
+            text-decoration: none;
+            color: midnightblue;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="welcome">Vitajte v e-shope s tričkami v 1.0 | Objednávkový systém</h1>
+    <div class="btn_start">
+        <a href="/zobraz-vsetky-objednavky">Zobraz všetky objednávky</a><br>
+        <a href="/pridaj-objednavku">Pridaj objednávku</a><br>
+        <a href="/registruj-pouzivatela">Registruj používateľa</a>
+    </div>
+</body>
+</html>
